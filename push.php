@@ -12,4 +12,5 @@ system('eval $(ssh-agen -s)');
 system("ssh-add $key");
 system("git add .");
 system("git commit -am 'Update'");
-system("git push -u $path master");
+system("git push -u origin master");
+
