@@ -1,0 +1,20 @@
+#!/bin/bash
+
+cd $(pwd)
+key=Tatiana
+
+if [[ ! -f "$key" ]]; then
+	echo "El archivo $key no existe"
+	exit
+fi
+
+eval $(ssh-agent -s)
+ssh-add $key
+
+read -p "Describa lo que hizo antes de enviar: " message
+read -p "Escriba el nombre de la rama sobre la que se hizo el cambio: " branch
+
+git add .
+git commit -am "$message"
+git push origin $branch
+
